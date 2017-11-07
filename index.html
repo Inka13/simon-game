@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+<style>
+body {
+	height: 840px;
+	background: -webkit-radial-gradient(center bottom, rgba(160, 201, 215, 0.5) 30%, rgba(160, 201, 215, 0) 80%), -webkit-linear-gradient(top, black 0%,#521515 0%,#731d1d 52%,#521515 91%,#731d1d 100%);
+	z-index: -1;
+}
+#container {
+	background: darkgrey;
+	font-family: Play;
+	border: 10px solid #354262;
+	border-radius: 100%;
+
+	box-shadow:  0 0 20px 8px rgba(0,0,0,.9);
+	position: relative;
+	left: 50%;
+	top: 50vh;
+	margin-left: -200px;
+	margin-top: -220px;
+	width: 420px;
+	height: 420px;
+	overflow: hidden;
+	z-index: 0;
+}
+#inner {
+	position: absolute;
+	border: 10px solid black;
+	border-radius: 100%;
+	width: 200px;
+	height: 200px;
+	left: 50%;
+	top: 50%;
+	margin-left: -110px;
+	margin-top: -110px;
+	box-shadow: inset 0 0 20px 5px rgba(0,0,0,.9);
+    background: -webkit-radial-gradient(center bottom, rgba(160, 201, 215, 0.8) 30%, rgba(160, 201, 215, 0) 80%), -webkit-linear-gradient(top, black 0%,#282F44 0%,#2C3551 52%,#354262 91%,#050C54 100%);
+
+	z-index: 1;
+}
+#boxes {
+	position: relative;
+	margin-left: -10px;
+	margin-top: -10px;
+	width: 440px;
+	display: flex;
+	flex-flow: row wrap;
+}
+.box {
+	position: relative;
+	width: 200px;
+	height: 200px;
+	border: 10px solid black;
+}
+
+.redon {
+	box-shadow: inset 0 0 50px 1px rgba(230,230,100,.9);
+	background-image: radial-gradient(ellipse farthest-corner at bottom left ,black 20%, rgba( 255, 0,0,0.8) 50%,rgba( 255, 0,0,0.8) 55%, black 75%);
+}
+.red {
+	background-image: radial-gradient(ellipse farthest-corner at bottom left ,black 30%, rgba( 255, 0,0,0.8) 55%, black 70%, black 95%);
+}
+.yellow {
+	background-image: radial-gradient(ellipse farthest-corner at top right ,black 30%, rgba(200,200,0,0.8) 55%, black 70%, black 95%);
+}
+.yellowon {
+	box-shadow: inset 0 0 50px 1px rgba(230,230,100,.9);
+	background-image: radial-gradient(ellipse farthest-corner at top right ,black 20%, rgba(200,200,0,0.8) 50%, rgba(200,200,0,0.8) 55%, black 75%);
+}
+
+.blue {
+	background-image: radial-gradient(ellipse farthest-corner at top left ,black 30%, rgba(0,0,250,0.8) 55%, black 70%, black 95%);
+}
+.blueon {
+	box-shadow: inset 0 0 50px 1px rgba(100,230,230,.9);
+	background-image: radial-gradient(ellipse farthest-corner at top left ,black 20%, rgba(0,0,250,0.8) 50%, rgba(0,0,250,0.8) 55%, black 75%);
+}
+.green {
+	background-image: radial-gradient(ellipse farthest-corner at bottom right ,black 30%, rgba( 0, 200,0,0.8) 55%, black 70%, black 95%);
+}
+.greenon {
+	box-shadow: inset 0 0 50px 1px rgba(230,230,100,.9);
+	background-image: radial-gradient(ellipse farthest-corner at bottom right ,black 20%, rgba( 0, 200,0,0.8) 50%, rgba( 0, 200,0,0.8) 55%, black 75%);
+}
+#simon {
+ width: 100%;
+ margin-top: 10%;
+ text-align: center;
+
+ font-size: 3rem;
+ font-weight: 600;
+}
+#options {
+	width: 100%;
+ 	text-align: center;
+
+ 	font-size: 1rem;
+ 	font-weight: 500;
+ 	display: flex;
+}
+#count{
+	width:25%;
+	margin-top: 2px;
+	margin-left: 7%;
+
+}
+#counter {
+	border: 1px solid black;
+	border-radius: 8px;
+	background-color: black;
+	color: darkred;
+	font-size: 2rem;
+}
+.text {
+
+	font-weight: 600;
+	font-size: 0.8rem;
+	padding-top: 9%;
+}
+#start {
+	margin-left: 6%;
+	width:25%;
+	padding-top: 6%;
+
+}
+.button {
+	width: 22px;
+	height: 22px;
+	border: 2px solid darkred;
+	box-shadow:0 8px 20px rgba(0,0,0,.9);
+	background-image: repeating-radial-gradient(circle at center, red 0, darkred, red 2px);
+	border-radius: 100%;
+	position: relative;
+	left: 50%;
+	margin-left: -12px;
+	margin-bottom: 5%;
+}
+#strict {
+	width:25%;
+	margin-left: 6%;
+}
+#strictlight {
+	width: 7px;
+	height: 7px;
+	border: 1px solid black;
+	background-color: darkred;
+	border-radius: 100%;
+	position: relative;
+	left: 50%;
+	margin: 0 0 3px -4px;
+
+}
+#strict .button {
+	background: gold;
+	border: 2px solid #333300;
+}
+#on {
+	display: flex;
+    margin: 3% 0 0 27%;
+}
+#offon {
+	width: 40px;
+	height: 20px;
+	background-color: black;
+	margin: 7% 3% 0 3%;
+	border-radius: 3px;
+}
+#slider {
+	width: 16px;
+	height: 16px;
+	border: 2px solid blue;
+	border-radius: 3px;
+	background-color: #0033ff;
+	box-shadow:0 8px 20px rgba(0,0,0,.9);
+}
+</style>
+</head>
+<body>
+<div id="container">
+	<div id="boxes">
+	<div class="box green" ><audio id="0" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"></audio></div>
+	<div class="box red" ><audio id="1" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"></audio></div>
+	<div class="box yellow" ><audio id="2" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"></audio></div>
+	<div class="box blue" ><audio id="3" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"></audio></div>
+	</div>
+	<div id="inner">
+		<div id="simon">Simon</div>
+		<div id="options">
+			<div id="count">
+				<div id="counter">00</div>
+				<div class="text">COUNT</div>
+			</div>
+			<div id="start">
+				<div class="button"></div>
+				<div class="text">START</div>
+			</div>
+			<div id="strict">
+				<div id="strictlight"></div>
+				<div class="button"></div>
+				<div class="text">STRICT</div>
+			</div>
+		</div>
+		<div id="on">
+			<div class="text">OFF</div>
+			<div id="offon">
+				<div id="slider"></div>
+
+			</div>
+			<div class="text">ON</div>
+		</div>
+	</div>
+
+</div>
+
+<script>
+var on=false;
+var strictMode=false;
+var player=false;
+var t=0;
+var arr=[];
+var back=false;
+function toggleOnOff() {
+	on=!on;
+	count.textContent="00";
+	if(on) {
+		count.style.color="red";
+		slider.style.marginLeft="50%";
+		strict.addEventListener('click', changeMode);
+		start.addEventListener('click', starting);
+	} else {
+		count.style.color="darkred";
+		slider.style.marginLeft="0";
+		strict.removeEventListener('click', changeMode);
+		start.removeEventListener('click', starting);
+		arr.length=0;
+	}
+}
+function starting() {
+	arr.length=0;
+	count.textContent="00";
+	player=false;
+	t=0;
+	tiltCount("no");
+	setTimeout(function() {startSession();},2000);
+
+}
+function activeBox(s) {
+console.log("active");
+	switch(s) {
+      		case 1:
+      			redbox.classList.remove('red');
+      			redbox.classList.add('redon');
+
+      			break;
+      		case 2:
+      			yellowbox.classList.remove('yellow');
+      			yellowbox.classList.add('yellowon');
+      			break;
+      		case 3:
+      			bluebox.classList.remove('blue');
+      			bluebox.classList.add('blueon');
+      			break;
+      		case 0:
+      			greenbox.classList.remove('green');
+      			greenbox.classList.add('greenon');
+      			break;
+     	}
+}
+function inactiveBox(s,l) {
+	switch(s) {
+      		case 1:
+      			redbox.classList.add('red');
+      			redbox.classList.remove('redon');
+      			break;
+      		case 2:
+      			yellowbox.classList.add('yellow');
+      			yellowbox.classList.remove('yellowon');
+      			break;
+      		case 3:
+      			bluebox.classList.add('blue');
+      			bluebox.classList.remove('blueon');
+      			break;
+      		case 0:
+      			greenbox.classList.add('green');
+      			greenbox.classList.remove('greenon');
+      			break;
+      		}
+    l--;
+    if(!player) {
+    	if(l>0) {
+      		let audio = document.querySelector(`audio[id="${arr[arr.length-l]}"]`);
+      		setTimeout(function() {
+     			playSound(audio, arr[arr.length-l], l);
+      		},100);
+      	} else {
+      		player=!player;
+			boxes.forEach(box => box.addEventListener('click', checkSound));
+		}
+	}
+
+}
+function playSound(audio, s, l) {
+	activeBox(s);
+	audio.volume=0.1;
+    if (!audio)  return;
+    // stop the function from running all together
+    audio.currentTime = 0; // rewind to the start
+    audio.play();
+    if(!player) {
+   		setTimeout(function() {
+     		inactiveBox(s,l);
+      	},600);
+   	} else {
+   		setTimeout(function() {
+     		inactiveBox(s,1);
+      	},100);
+   	}
+
+}
+function tiltWin(option) {
+	if(option=="on") {
+			redbox.classList.remove('red');
+      			redbox.classList.add('redon');
+      			yellowbox.classList.remove('yellow');
+      			yellowbox.classList.add('yellowon');
+      			bluebox.classList.remove('blue');
+      			bluebox.classList.add('blueon');
+      			greenbox.classList.remove('green');
+      			greenbox.classList.add('greenon');
+		} else {
+			redbox.classList.add('red');
+      			redbox.classList.remove('redon');
+      			yellowbox.classList.add('yellow');
+      			yellowbox.classList.remove('yellowon');
+      			bluebox.classList.add('blue');
+      			bluebox.classList.remove('blueon');
+      			greenbox.classList.add('green');
+      			greenbox.classList.remove('greenon');
+		}
+}
+function tiltCount(win) {
+	count.style.color="black";
+	setTimeout(function() {
+		count.style.color="red";
+		if(win=="win") tiltWin("on");
+		setTimeout(function() {
+			count.style.color="black";
+			if(win=="win") tiltWin("off");
+			setTimeout(function() {
+				count.style.color="red";
+				if(win=="win") {
+					tiltWin("on");
+      				setTimeout(function() {
+      					count.style.color="black";
+						if(win=="win") tiltWin("off");
+						setTimeout(function() {
+							count.style.color="red";
+							if(win=="win") tiltWin("on");
+							setTimeout(function() {
+								if(win=="win") tiltWin("off");
+							},500);
+						},500);
+					},500);
+      			}
+			}, 500);
+		}, 500);
+	}, 500);
+}
+
+function declareWin() {
+	setTimeout(function() {
+		tiltCount("win");
+	}, 500);
+	setTimeout(function() {
+		starting();
+	}, 4500);
+}
+function checkSound(e) {
+	if(this.classList.contains('box')) {
+		let audio = this.firstChild;
+
+		if(parseInt(audio.id)==arr[t]) {
+			playSound(audio, parseInt(audio.id), 1);
+			if(t==arr.length-1) {
+				if(t==3) {
+					declareWin();
+					return;
+				}
+				t=0;
+				boxes.forEach(box => box.removeEventListener('click', checkSound));
+				setTimeout(function() {
+					player=!player;
+
+					startSession();},1500);
+			} else t++;
+		} else {
+			tiltCount("no");
+			setTimeout(function() {
+
+				if(strictMode){
+					starting();
+				} else {
+					back=!back;
+					player=!player;
+					startSession();
+				}
+			}, 1000);
+
+		}
+	}
+}
+function startSession() {
+		if(!back) {
+			r=Math.floor(Math.random()*4);
+			arr.push(r);
+			count.textContent= arr.length<10 ? "0"+arr.length : arr.length;
+		} else {
+			back=!back;
+			t=0;
+		}
+		console.log(arr);
+		let audio = document.querySelector(`audio[id="${arr[0]}"]`);
+
+		playSound(audio, arr[0], arr.length);
+
+}
+
+function changeMode() {
+	strictMode=!strictMode;
+	if(strictMode) {
+		strictlight.style.background="red";
+	} else strictlight.style.background="darkred";
+}
+const offon=document.querySelector('#slider');
+const start=document.querySelector('#start .button');
+const strict=document.querySelector('#strict .button');
+const strictlight=document.querySelector('#strictlight');
+const count=document.querySelector('#counter');
+offon.addEventListener('click', toggleOnOff);
+const redbox=document.querySelector('.red');
+const bluebox=document.querySelector('.blue');
+const greenbox=document.querySelector('.green');
+const yellowbox=document.querySelector('.yellow');
+const boxes=document.querySelectorAll('.box');
+</script>
+</body>
+</html>
